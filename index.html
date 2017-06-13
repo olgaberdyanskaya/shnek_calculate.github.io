@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentellela Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" rel="stylesheet">
+    <link href="css/new_style.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <!-- top navigation -->
+        <div class="top_nav">
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main" style="margin-left:0px;" id="app">
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="panel">
+                <div class="panel-body">
+                  <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation" class="active"><a href="#base" aria-controls="base" role="tab" data-toggle="tab">Общие характеристики</a></li>
+                      <li role="presentation"><a href="#ok" aria-controls="ok" role="tab" data-toggle="tab">Характеристики резца</a></li>
+                      <li role="presentation"><a href="#rezec" aria-controls="rezec" role="tab" data-toggle="tab">Характеристики комбайна</a></li>
+                      <li role="presentation"><a href="#shema_raz_plasta" aria-controls="shema_raz_plasta" role="tab" data-toggle="tab">Cхема разрушения пласта</a></li>
+                      <li role="presentation"><a href="#dvig" aria-controls="rezec" role="tab" data-toggle="tab">Характеристики двигателя</a></li>
+                      <li role="presentation"><a href="#shnek" aria-controls="shnek" role="tab" data-toggle="tab">Расстановка резцов</a></li>
+                  </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="base" style="padding:10px;">
+                            <div class="form-horizontal form-label-left">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Минимальная мощность пласта Hmin
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="base.hmin" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Максимальная мощность пласта Hmax
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="base.hmax" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Угол падения пласта, град
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="base.alpha" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Cтепень хрупкости Е
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="base.e" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Плотность угля γ, т/м3
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="base.gamma" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Сопротивляемость угля резанию
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="base.ap" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Длина машинной части лавы
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="base.L" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="ok" style="padding:10px;">
+                            <div class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Тип резца
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.name" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Ширина режущей части режущего инструмента вк, см
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.vk" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Вылет резца ℓр, см
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.lp" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Угол резания δ, град
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.sigma" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Конструктивный задний угол, град
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.alpha" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Расчетная ширина режущей кромки резца
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.bp" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Значение коэффициента формы режущей кромки резца
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.kp" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        коэффициент вылета резца
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.kl" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        коэффициент влияния формы передней поверхности режущей части резца на силу резания
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.kf" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        максимальному значению толщины пластины твердого сплава по задней поверхности резца
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.u" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        коэффициент влияния на силу резания поворотного резца
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.rez.kpr" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="rezec" style="padding:10px;">
+                            <div class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Модель очистного комбайна
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.name" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Максимальная скорость подачи комбайна
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.vpb" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Минимальная скорость подачи комбайна
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.vpm" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Ширина захвата Вз, м
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.bz" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Диаметр Ди, м
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.di" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <!--div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Количество резцов n0
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.no" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div-->
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Число резцов в одной линии резания nрл, шт.
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.nrl" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Частота вращения рабочих органов n, об/мин
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.n" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <!--div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Количество забойных резцов
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.nz" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Количество кутковых резцов
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.nk" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div-->
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        КПД исполнительного органа
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.nu" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        КПД транс¬миссии привода
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.nutr" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        КПД механизма перемещения
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.nuk" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Cила тяжести машины, H
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.g" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Номинальная мощность двигателя (при работе в режиме S4 с ПВ = 60%)
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.pn" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Часовая производительность конвейера
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.q" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Шаг передвижки секций крепи по длине лавы
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.ok.lkr" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Наличие щитка
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <label>
+                                            <input type="radio" name="ok_psh" v-model="teh.ok.psh" value="1"> Есть</label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label>
+                                            <input type="radio" name="ok_psh" v-model="teh.ok.psh" value="0"> Нет</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="shema_raz_plasta">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                    Положение опережающего шнека
+                                </label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <label>
+                                        <input type="radio" name="ok_chema_pol" v-model="teh.ok.chema.pol" value="1"> Верхний</label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label>
+                                        <input type="radio" name="ok_chema_pol" v-model="teh.ok.chema.pol" value="0"> Нижний</label>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                    Направление движения опережающего исполнительного органа
+                                </label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <label>
+                                        <input type="radio" name="naprav_1" v-model="teh.ok.chema.naprav_1" value="1"> По часовой стрелке</label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label>
+                                        <input type="radio" name="naprav_1" v-model="teh.ok.chema.naprav_1" value="0"> Против часовой стрелки</label>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                    Направление движения отстающего исполнительного органа
+                                </label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <label>
+                                        <input type="radio" name="naprav_2" v-model="teh.ok.chema.naprav_2" value="1"> По часовой стрелке</label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label>
+                                        <input type="radio" name="naprav_2" v-model="teh.ok.chema.naprav_2" value="0"> Против часовой стрелки</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="dvig" style="padding:10px;">
+                            <div class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Модель двигателя
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.name" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Синхронная  частота вращения ротора
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.nc" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Номинальная   частота вращения ротора
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.nn" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Максимальный вращающий момент электродвигателя в условиях его питания номинальным напряжением
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.mk" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Номинальный вращающий момент двигателя
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.mn" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Коэффициент, учитывающий отношение амплитуды низкочастотной слагающей максимальной нагрузки к среднему ее значению
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.km" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Коэффициент, учитывающий отношение амплитуды высокочастотной слагающей нагрузки к максимальному значению низкочастотной нагрузки
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.kkr" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Коэффициент выравнивания высокочастотной слагающей нагрузки, равный отношению амплитуды высокочастотной составляющей электромагнитного момента двигателя к амплитуде высокочастотной составляющей нагрузки
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.kb" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">
+                                        Коэффициент приведения махового момента трансмиссии и исполнительного органа машины к валу ротора двигателя
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" v-model="teh.motor.kpr" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div tole="tabpanel" class="tab-pane" id="shnek" style="padding:10px">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>№ линии</th>
+                                    <th>Тип резца</th>
+                                    <th>Количество резцов</th>
+                                    <th>Расстояние до следующей линии резания (мм)</th>
+                                    <th>Угол наклона</th>
+                                    <th></th>
+                                </tr>
+                                <tr v-for="item in teh.shnek">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.type}}</td>
+                                    <td><input v-model="item.count" type="text" class="form-control"></td>
+                                    <td><input v-model="item.l" type="text" class="form-control"></td>
+                                    <td><input v-model="item.beta" type="text" class="form-control"></td>
+                                    <td><a href="javascript:void(0)" @click="removeShnekLine($index)" style="font-size: 28px;    font-weight: bold;    line-height: 32px;">&times;</a> </td>
+                                </tr>
+                            </table>
+                            <a class="pull-right" href="javascript:void(0)" @click="showShnekGraf()"><strong>Показать схему расстановки резцов</strong></a>
+                            <button class="btn btn-primary" @click="addZLine()">Добавить линию с забойными резцами</button> (линия будет добавлвена в конец таблицы)<br>
+                            <button class="btn btn-primary" @click="addKLine()">Добавить линию с кутковыми резцами</button> (линия будет добавлвена в начало таблицы )<br>
+                            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"  id="graf_shnek_modal">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Схема расстановки резцов</h4>
+                                        </div>
+                                        <div class="modal-body" style="overflow:auto">
+                                            <canvas id="graf_shnek"></canvas>
+                                            <p><center>Ширина захвата = {{teh.shnek_bz}}</center></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" @click="ShnekGrafConvert()">Конвертировать в изображение</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+		  <br>
+		<div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+				<button class="btn btn-primary btn-lg" @click="drow">Произвести расчет</button>
+			</div>
+             <p>&nbsp;</p>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <!--<p>Vp= {{rezult.vp}}</p>
+                        <p>Zoz= {{rezult.Zoz}}</p>
+                        <p>yz= {{rezult.yz}}</p>
+                        <p>deltayz= {{rezult.deltayz}}</p>
+                        <p>Zz= {{rezult.Zz}}</p>
+                        <p>Zok= {{rezult.Zok}}</p>
+                        <p>yk= {{rezult.yk}}</p>
+                        <p>deltayk= {{rezult.deltayk}}</p>
+                        <p>Zk= {{rezult.Zk}}</p>-->
+                        <p>Полная средняя сила резания на затупленном забойном резце - <b>{{rezult.Zz}} H</b></p>
+                        <p>Полная средняя сила резания на затупленном кутковом резце - <b>{{rezult.Zk}} H</b></p>
+                        <p>P={{a}}+{{b}}*v;</p>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Vn</th>
+                                <th>P</th>
+                                <th>Ктех</th>
+                                <th>Кэ</th>
+                                <th>Qт</th>
+                                <th>Qтех</th>
+                                <th>Qэ</th>
+                                <th>W</th>
+                                <th>Qпв</th>
+                            </tr>
+                            <tr v-for="item in rezult.graph">
+                                <td>{{item.v}}</td>
+                                <td>{{item.P}}</td>
+                                <td>{{item.Kteh}}</td>
+                                <td>{{item.Ke}}</td>
+                                <td>{{item.Qt}}</td>
+                                <td>{{item.Qteh}}</td>
+                                <td>{{item.Qe}}</td>
+                                <td>{{item.W}}</td>
+                                <td>{{item.Qpv}}</td>
+                            </tr>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <canvas id="nomogramm"></canvas>
+                                <center><a href="javascript:void(0)" @click="NomogrammConvert()">Конвертировать номограмму в изображение</a></center>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <p>Р кВт- Общая нагрузка на валу двигателя</p>
+                                    <p>Qт, т/мин - Теоретическая производительность машины</p>
+                                    <p>Qтех - Техническая (среднечасовая) производительность машины</p>
+                                    <p>QЭ  - Эксплуатационная производительность машины</p>
+                                    <p>QПВ т/ч  -  Производительность машины QПВ, т/ч, обусловленная тепловой характеристикой электродвигателя</p>
+                                    <p>W - удельные энергозатраты при работе машины, кВт.ч/т</p>
+                                    <p>Ру – мощность, соответствующая устойчивому вращающему моменту двигателя в условиях его питания от шахтной сети</p>
+                                    <p>Vр = {{rezult.vp}}-  Скорость резания</p>
+                                </div>
+                                <br>
+                                <div>
+                                    <p><b>Ограничения скорости перемещения :</b></p>
+                                    <p>Vpy = {{rezult.Vpu}} - по устойчивой мощности электродвигателя.</p>
+                                    <p>Vpd = {{rezult.Vpd}} - по вылету резца.</p>
+                                    <p>Vkr = {{rezult.Vkr}} - по скорости крепления.</p>
+                                    <p>Vpb = {{rezult.Vpb}} - по предельному значению Vп.</p>
+                                    <p>Vnk = {{rezult.Vnk}} - по производительности конвейера.</p>
+                                    <br>
+                                    <p v-if="rezult.Ve!=0"><b>Пересчение QПВ и Qэ: Vэ = {{rezult.Ve}} м/мин</b></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p><br></p>
+                        <div>
+                            <div class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <p style="text-align:center;">Рекомендуемая скорость подачи очистного комбайна  - <b>{{rezult.Vrec}} м/мин</b></p>
+                                    <!--<p style="text-align:center; color:red;font-weight:bold;" v-if="rezult.Vrec<teh.ok.vpm">Рекомендуемая скорость подачи очистного комбайна  меньше минимальной скорости подачи комбайна</p>-->
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                       Скорость подачи комбайна
+                                    </label>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <input type="text" v-model="vn" class="form-control">
+                                    </div>
+                                    <div class="col-md-5 col-sm-5 col-xs-12">
+                                        <button class="btn btn-primary" @click="getQ">Расчитать эксплуатационная производительность </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p style="    font-size: 16px;text-align:center;">Сменная эксплуатационная производительность очистного комбайна  - <b>{{Q}} т.</b></p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+			</div>
+		  </div>
+		</div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer style="margin-left:0px;">
+          <div class="pull-left">
+            Разработчик: Моисеев Артем Александрович
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="build/js/custom.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/app.js"></script>
+	
+	  
+    </body>
+</html>
